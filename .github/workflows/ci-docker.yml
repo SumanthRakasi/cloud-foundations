@@ -1,0 +1,35 @@
+name: CI - Flask Docker App
+
+on:
+  push:
+    paths:
+      - "docker/day2-flask-app/**"
+      - ".github/workflows/ci-docker.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: docker/day2-flask-app/app
+        run: |
+          pip install -r requirements.txt
+
+      - name: Import check
+        working-directory: docker/day2-flask-app/app
+        run: |
+          python -c "import app"
+
+      - name: Build Docker image
+        working-directory: docker/day2-flask-app
+        run: |
+          docker build -t flask-demo:ci .
