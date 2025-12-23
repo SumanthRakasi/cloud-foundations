@@ -1,3 +1,4 @@
+![CI](https://github.com/SumanthRakasi/cloud-foundations/actions/workflows/ci-docker.yml/badge.svg)![CI](https://github.com/SumanthRakasi/cloud-foundations/actions/workflows/ci-docker.yml/badge.svg)
 # Docker Day 2 — Flask App Container
 
 ## Run locally
